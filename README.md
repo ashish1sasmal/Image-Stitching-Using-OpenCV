@@ -11,7 +11,9 @@ find the object. It needs atleast four correct points to find the transformation
 
 ## Results
 
-#### M.A.R.S. C.U.R.I.O.S.I.T.Y. R.O.V.E.R. panaroma view
+#### M.A.R.S. C.U.R.I.O.S.I.T.Y. R.O.V.E.R. panaroma view <img src="https://png.pngtree.com/png-clipart/20191120/original/pngtree-planet-mars-icon-cartoon-style-png-image_5084292.jpg" width=50>
+
+![GitHub Logo](https://github.com/ashish1sasmal/Images-Stitching-Using-OpenCV/blob/master/Mars%20Curiosity/Result/Mars_Curiosity2.png)
 
 
 #### Input Images :
