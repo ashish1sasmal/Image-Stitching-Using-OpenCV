@@ -1,8 +1,13 @@
 import cv2
 import numpy as np
 import sys
+import json
 
 cv2.namedWindow("IMAGE STITCHING",cv2.WINDOW_NORMAL)
+
+f = open('config.json')
+co = json.load(f)
+
 
 MIN_MATCH_COUNT = 10
 
@@ -10,10 +15,10 @@ def stitchImages(img1, img2):
     gray1 = cv2.cvtColor(img1,cv2.COLOR_BGR2GRAY)
     gray2 = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
 
-    # Initiate STAR detector
+    # Initiate SIFT detector
     orb = cv2.xfeatures2d.SIFT_create()
 
-    # Find keypoints and descriptor using ORB
+    # Find keypoints and descriptor using SIFT
     kp1, des1 = orb.detectAndCompute(gray1, None)
     kp2, des2 = orb.detectAndCompute(gray2, None)
 
@@ -65,6 +70,12 @@ if __name__ == "__main__":
 
     st_img ,homography = stitchImages(img1,img2)
     # stitchImages(img1,img2)
-    cv2.imwrite("Result/result_stitch_1.jpg",st_img)
+    cv2.imwrite(f"Result/result_stitch_{co['currentOutput']}.jpg",st_img)
+    co["currentOutput"]=str(int(co["currentOutput"])+1)
+    if sys.argv[3]=="1":
+        with open('config.json', 'w') as f:
+            json.dump(co, f)
     cv2.imshow("IMAGE STITCHING",st_img)
     cv2.waitKey(0)
+
+f.close()
