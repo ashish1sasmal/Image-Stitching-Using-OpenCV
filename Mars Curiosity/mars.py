@@ -61,7 +61,7 @@ def stitchImages(img1, img2):
         print("[Not enough matches are found]")
         matchesMask = None
 
-
+#
 if __name__ == "__main__":
     onlyfiles = [f for f in listdir("Samples") if isfile(join("Samples", f))]
     onlyfiles.sort()
