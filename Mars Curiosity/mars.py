@@ -1,14 +1,13 @@
+
 import cv2
 import numpy as np
 import sys
-import json
+
+from os import listdir
+from os.path import isfile, join
 
 
 cv2.namedWindow("IMAGE STITCHING",cv2.WINDOW_NORMAL)
-
-f = open('config.json')
-co = json.load(f)
-
 
 MIN_MATCH_COUNT = 10
 
@@ -64,21 +63,24 @@ def stitchImages(img1, img2):
 
 
 if __name__ == "__main__":
+    onlyfiles = [f for f in listdir("Samples") if isfile(join("Samples", f))]
+    onlyfiles.sort()
+    print(onlyfiles)
 
 
-    img1 = cv2.imread("Tests/"+sys.argv[1])
-    img2 = cv2.imread("Tests/"+sys.argv[2])
-
+    onlyfiles=onlyfiles[::-1]
+    img1 = cv2.imread("Samples/"+onlyfiles[0])
     print("[ Stitching Started .... ]")
-
-    st_img ,homography = stitchImages(img1,img2)
+    for (i,j) in enumerate(onlyfiles[1:]):
+        print(f"[ Stitching Status : Image No. {i+1}  ...]")
+        img2 = cv2.imread("Samples/"+j)
+        img1 ,homography = stitchImages(img1,img2)
     # stitchImages(img1,img2)
-    cv2.imwrite(f"Result/result_stitch_{co['currentOutput']}.jpg",st_img)
-    co["currentOutput"]=str(int(co["currentOutput"])+1)
-    if sys.argv[3]=="1":
-        with open('config.json', 'w') as f:
-            json.dump(co, f)
-    cv2.imshow("IMAGE STITCHING",st_img)
+    print("[ Stitching Done !]")
+    cv2.imwrite(f"Result/Mars_Curiosity.png",img1)
+    # co["currentOutput"]=str(int(co["currentOutput"])+1)
+    # if sys.argv[3]=="1":
+    #     with open('config.json', 'w') as f:
+    #         json.dump(co, f)
+    cv2.imshow("IMAGE STITCHING",img1)
     cv2.waitKey(0)
-
-f.close()
