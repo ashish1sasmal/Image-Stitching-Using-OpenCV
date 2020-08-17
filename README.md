@@ -15,8 +15,8 @@ find the object. It needs atleast four correct points to find the transformation
 * Image 1
 * Image 2
 
-![GitHub Logo](https://github.com/ashish1sasmal/Images-Stitching-Using-OpenCV/blob/master/Tests/stitch1.png)
-![GitHub Logo](https://github.com/ashish1sasmal/Images-Stitching-Using-OpenCV/blob/master/Tests/stitch2.png)
+![GitHub Logo](https://github.com/ashish1sasmal/Images-Stitching-Using-OpenCV/blob/master/Tests/b1.png)
+![GitHub Logo](https://github.com/ashish1sasmal/Images-Stitching-Using-OpenCV/blob/master/Tests/b2.png)
 
 #### Output Image [Stitched Output ] : 
 
